@@ -1,0 +1,427 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Computing Center</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+    <script type="text/x-mathjax-config">
+    // <![CDATA[
+    MathJax.Hub.Config({
+        TeX: {extensions: ["AMSmath.js", "AMSsymbols.js"]},
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        showProcessingMessages : false,
+        messageStyle : "none" ,
+        showMathMenu: false ,
+        tex2jax: {
+            processEnvironments: true,
+            inlineMath: [ ['$','$'], ["\(","\)"] ],
+            displayMath: [ ['$$','$$'], ["\[","\]"] ],
+            preview : "none",
+            processEscapes: true
+        },
+        "HTML-CSS": { linebreaks: { automatic:true, width: "latex-container"} }
+    });
+    // ]]>
+
+    </script>
+    <script type="text/javascript" src="../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+
+    <link rel="stylesheet" href="css/latex2html5.min.css">
+    <script type="text/javascript" src="js/latex2html5.min.js"></script>
+    <script type="text/javascript" src="js/DoubleColorBall.js"></script>
+
+
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong><a href="index.html#admin-offcanvas" data-am-offcanvas>CCM</a></strong> <small>Computing Center</small>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span> 计算模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="s11.html" class="am-cf"><span class="am-icon-bug"></span> Toy Model</a></li>
+                        <li><a href="s12.html"><span class="am-icon-puzzle-piece"></span> 重构</a></li>
+                        <li><a href="s13.html"><span class="am-icon-th"></span> 空间剖分<span class="am-badge am-badge-secondary am-margin-right am-fr">四叉树</span></a></li>
+                        <li><a href="s14.html"><span class="am-icon-check"></span> 因果推断<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                    </ul>
+                </li>
+                <li><a href="s2.html"><span class="am-icon-file"></span> 文档</a></li>
+                <li><a href="s3.html"><span class="am-icon-pencil-square-o"></span> 代码</a></li>
+                <li><a href="s4.html"><span class="am-icon-sign-out"></span> 应用</a></li>
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 公告</p>
+                    <p>来研究双色球策略吧。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content start -->
+
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">重构</strong> / <small>Logistic Map</small><br>
+                <small>$x(t) = $ <span id="para"></span> $\cdot~x(t-1)(1-x(t-1)),$<br>$y(t) = $ <span id="para1"></span> $\cdot~y(t-1)(1-y(t-1)$ <span id="para2"></span> $\cdot~x(t-1)).$</small>
+            </div>
+        </div>
+        <hr/>
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                <div class="am-u-sm-12">
+                <table class="am-table am-table-compact">
+                    <tbody>
+                    <tr>
+                        <td>$r_x$&nbsp&nbsp&nbsp&nbsp</td>
+                        <td><input id="defaultSlider" type="range" value="38" min="-18" max="38"/> <span id="currentValue">3.8</span></td>
+                    </tr>
+                    <tr>
+                        <td>$r_y$&nbsp&nbsp&nbsp&nbsp</td>
+                        <td><input id="defaultSlider1" type="range" value="38" min="-18" max="38"/> <span id="currentValue1">3.8</span></td>
+                    </tr>
+                    <tr>
+                        <td>$\beta$</td>
+                        <td><input id="defaultSlider2" type="range" value="1" min="-10" max="10"/> <span id="currentValue2">0.1</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                    </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                <div class="am-u-sm-12">
+                <table class="am-table am-table-compact">
+                    <tbody>
+                    <tr>
+                        <td>$T$&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                        <td><input id="defaultSlider3" type="range" value="20" min="20" max="180"/> <span id="currentValue3">20</span></td>
+                    </tr>
+                    <tr>
+                        <td>$x(0)$</td>
+                        <td><input id="defaultSlider4" type="range" min="0" max="10"/> <span id="currentValue4">0.5</span></td>
+                    </tr>
+                    <tr>
+                        <td>$y(0)$</td>
+                        <td><input id="defaultSlider5" type="range" min="0" max="10"/> <span id="currentValue5">0.5</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-6"><div id="plot" style="height:300px"></div><br></div>
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-6"><div id="plot_re" style="height:300px"></div><br></div>
+        <div class="am-u-sm-12"><hr></div>
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-6"><div id="plot_x_re" style="height:300px"></div><br></div>
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-6"><div id="plot_y_re" style="height:300px"></div><br></div>
+    </div>
+    <!-- content end -->
+
+</div>
+
+
+<footer>
+    <hr>
+    <p class="am-padding-left">Deployed in <span class="am-icon-windows"></span> Windows
+        Azure.<br/><span class="am-icon-bug"></span> Powered by</a> RubyStack, PaperScript, Amaze UI, ECharts, MathJax, and latex2html5. Developed with WebStorm.</p>
+</footer>
+
+<script src="echarts/build/dist/echarts.js"></script>
+<script src="js/echarts_theme.js"></script>
+<script language="javascript">
+    $(function () {
+        $('#defaultSlider').change(function () {
+            document.getElementById("currentValue").innerHTML = this.value/10;
+            document.getElementById("para").innerHTML = this.value/10; go();
+        });
+        $('#defaultSlider').change();
+    });
+    $(function () {
+        $('#defaultSlider1').change(function () {
+            document.getElementById("currentValue1").innerHTML = this.value/10;
+            document.getElementById("para1").innerHTML = this.value/10; go();
+        });
+        $('#defaultSlider1').change();
+    });
+    $(function () {
+        $('#defaultSlider2').change(function () {
+            document.getElementById("currentValue2").innerHTML = this.value/10;
+            if (this.value/10 >= 0) {document.getElementById("para2").innerHTML = "-"+this.value/10;}
+            if (this.value/10 < 0) {document.getElementById("para2").innerHTML = "+"+(-this.value/10);} go();
+        });
+        $('#defaultSlider2').change();
+    });
+    $(function () {
+        $('#defaultSlider3').change(function () {
+            document.getElementById("currentValue3").innerHTML = this.value; go();
+        });
+        $('#defaultSlider3').change();
+    });
+    $(function () {
+        $('#defaultSlider4').change(function () {
+            document.getElementById("currentValue4").innerHTML = this.value/10; go();
+        });
+        $('#defaultSlider4').change();
+    });
+    $(function () {
+        $('#defaultSlider5').change(function () {
+            document.getElementById("currentValue5").innerHTML = this.value/10; go();
+        });
+        $('#defaultSlider5').change();
+    });
+</script>
+<script>
+    function go() {
+        var r_x = document.getElementById("currentValue").innerHTML;
+        var r_y = document.getElementById("currentValue1").innerHTML;
+        var beta = document.getElementById("currentValue2").innerHTML;
+        var T = document.getElementById("currentValue3").innerHTML;
+        var x0 = document.getElementById("currentValue4").innerHTML;
+        var y0 = document.getElementById("currentValue5").innerHTML;
+        var L = new Logistic(x0, y0, r_x, r_y, beta, T);
+        var x_re = reconstruction(L.x, 2, 1), y_re = reconstruction(L.y, 2, 1);
+
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'echarts/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/bar',
+                    'echarts/chart/chord',
+                    'echarts/chart/eventRiver',
+                    'echarts/chart/force',
+                    'echarts/chart/funnel',
+                    'echarts/chart/gauge',
+                    'echarts/chart/k',
+                    'echarts/chart/line',
+                    'echarts/chart/map',
+                    'echarts/chart/pie',
+                    'echarts/chart/radar',
+                    'echarts/chart/scatter',
+                    'echarts/chart/tree',
+                    'echarts/chart/treemap',
+                    'echarts/chart/venn',
+                    'echarts/chart/wordCloud'
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('plot'), theme);
+                    var myChart1 = ec.init(document.getElementById('plot_re'), theme);
+                    var myChart2 = ec.init(document.getElementById('plot_x_re'), theme1);
+                    var myChart3 = ec.init(document.getElementById('plot_y_re'), theme1);
+                    var xaxis = [];
+                    for (var i = 0; i <= T; i++) {
+                        xaxis.push(i);
+                    }
+                    option = {
+                        title: {
+                            x: "center",
+                            text: 'Logistic Map',
+                            subtext: '原始数据'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            y: "bottom",
+                            data: ['x', 'y']
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: xaxis
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        series: [
+                            {
+                                name: 'x',
+                                type: 'line',
+                                data: L.x
+                            },
+                            {
+                                name: 'y',
+                                type: 'line',
+                                data: L.y
+                            }
+                        ]
+                    };
+                    option1 = {
+                        title: {
+                            x: "center",
+                            text: 'Logistic Map',
+                            subtext: '重构数据'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            y: "bottom",
+                            data: ['[x(t), x(t-1)]', '[y(t), y(t-1)]']
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'value',
+                                scale:true
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                scale:true,
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '[x(t), x(t-1)]',
+                                type: 'scatter',
+                                data: x_re
+                            },
+                            {
+                                name: '[y(t), y(t-1)]',
+                                type: 'scatter',
+                                data: y_re
+                            }
+                        ]
+                    };
+                    option2 = {
+                        title: {
+                            x: "center",
+                            text: 'Logistic Map',
+                            subtext: 'x 重构数据'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            y: "bottom",
+                            data: ['[x(t), x(t-1)]']
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'value',
+                                scale:true
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                scale:true,
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '[x(t), x(t-1)]',
+                                type: 'scatter',
+                                data: x_re,
+                                itemStyle: {
+                                    normal: {
+                                        color: "#66B3FF"
+                                }
+                    }
+                            }
+                        ]
+                    };
+                    option3 = {
+                        title: {
+                            x: "center",
+                            text: 'Logistic Map',
+                            subtext: 'y 重构数据'
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            y: "bottom",
+                            data: ['[y(t), y(t-1)]']
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'value',
+                                scale:true
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                scale:true,
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '[y(t), y(t-1)]',
+                                type: 'scatter',
+                                data: y_re
+                            }
+                        ]
+                    };
+                    // 为echarts对象加载数据
+                    myChart.setOption(option);myChart1.setOption(option1);myChart2.setOption(option2);myChart3.setOption(option3);
+                }
+        );
+    }
+</script>
+
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

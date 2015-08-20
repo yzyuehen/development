@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Computing Center</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="assets/css/admin.css">
+
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong><a href="#admin-offcanvas" data-am-offcanvas>CCM</a></strong> <small>Computing Center</small>
+    </div>
+
+
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span> 计算模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+            <li><a href="s11.html" class="am-cf"><span class="am-icon-bug"></span> Toy Model</a></li>
+            <li><a href="s12.html"><span class="am-icon-puzzle-piece"></span> 重构</a></li>
+            <li><a href="s13.html"><span class="am-icon-th"></span> 空间剖分<span class="am-badge am-badge-secondary am-margin-right am-fr">四叉树</span></a></li>
+            <li><a href="s14.html"><span class="am-icon-check"></span> 因果推断<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          </ul>
+        </li>
+        <li><a href="s2.html"><span class="am-icon-file"></span> 文档</a></li>
+        <li><a href="s3.html"><span class="am-icon-pencil-square-o"></span> 代码</a></li>
+        <li><a href="s4.html"><span class="am-icon-sign-out"></span> 应用</a></li>
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+          <p>来研究双色球策略吧。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- content start -->
+
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>概览</small></div>
+    </div>
+
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="s11.html" class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>Toy Model</a></li>
+      <li><a href="s12.html" class="am-text-warning"><span class="am-icon-btn am-icon-puzzle-piece"></span><br/>重构</a></li>
+      <li><a href="s13.html" class="am-text-danger"><span class="am-icon-btn am-icon-th"></span><br/>空间剖分</a></li>
+      <li><a href="s14.html" class="am-text-secondary"><span class="am-icon-btn am-icon-check"></span><br/>因果推断</a></li>
+    </ul>
+      <hr>
+    <div class="am-g">
+      <div class="am-u-sm-12">
+
+         <p class="admin-content-comment am-icon-warning">  所有 Ruby 程序统一由 js 改写，算法包为 <code>DoubleColorBall.js</code>。</p>
+          <p class="admin-content-comment"></p>
+      </div>
+    </div>
+
+  </div>
+  <!-- content end -->
+
+</div>
+
+
+<footer>
+    <hr>
+    <p class="am-padding-left">Deployed in <span class="am-icon-windows"></span> Windows
+        Azure.<br/><span class="am-icon-bug"></span> Powered by</a> RubyStack, PaperScript, Amaze UI, ECharts, MathJax, and latex2html5. Developed with WebStorm.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

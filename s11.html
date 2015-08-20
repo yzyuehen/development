@@ -1,0 +1,239 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Computing Center</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="assets/css/admin.css">
+
+  <script type="text/x-mathjax-config">
+    // <![CDATA[
+    MathJax.Hub.Config({ 
+        TeX: {extensions: ["AMSmath.js", "AMSsymbols.js"]},     
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        showProcessingMessages : false,
+        messageStyle : "none" ,    
+        showMathMenu: false ,
+        tex2jax: {
+            processEnvironments: true,
+            inlineMath: [ ['$','$'], ["\(","\)"] ],
+            displayMath: [ ['$$','$$'], ["\[","\]"] ],
+            preview : "none",
+            processEscapes: true
+        },
+        "HTML-CSS": { linebreaks: { automatic:true, width: "latex-container"} }
+    });
+    // ]]>
+</script>
+<script type="text/javascript" src="../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+        
+  
+     <link rel="stylesheet" href="css/latex2html5.min.css"> 
+     <script type="text/javascript" src="js/latex2html5.min.js"></script> 
+
+      <script type="text/javascript" src="js/paper-full.js"></script>
+      <script type="text/paperscript" canvas="canvas">
+    
+function Logistic(x0, y0, T) {
+    var r_x = 3.8, r_y = 3.5, beta = 0.1;
+    var x = [x0], y = [y0], t = 0;
+    while (t <= T) {
+        x.push(r_x*x[x.length-1]*(1-x[x.length-1]));
+        y.push(r_y*y[y.length-1]*(1-y[y.length-1]-beta*x[x.length-1]));
+        t += 1;
+    }
+    this.x = x, this.y = y;
+}
+
+function reconstruction(x, e, tao) {
+    x_re = [];
+    for (var t = (e-1)*tao; t < x.length; t++) {
+        vector = [];
+        for (var i = 1; i <= e; i++) {
+            vector.push(x[t-(i-1)*tao]);
+        }
+        x_re.push(vector);
+    }
+    return x_re;
+}
+
+function Quadtree(x) {
+    this.x = [], this.y = [];
+    for (var i = 0, len = x.length; i < len; i++) {
+        this.x.push(x[i][0]);
+        this.y.push(x[i][1]);
+    }
+
+    this.go = function() {
+        var tree = [];
+        Array.prototype.max = function(){ 
+            return Math.max.apply({},this) 
+        } 
+        Array.prototype.min = function(){ 
+            return Math.min.apply({},this) 
+        } 
+        node = [[[this.x.min()-0.001, this.y.min()-0.001], [this.x.max(), this.y.max()]]];
+        draw_box(this.x.min()-0.001, 1-this.y.min()+0.001, this.x.max(), 1-this.y.max());
+        while (node.length > 0) {
+            temp = [];
+            for (var i = 0, len = node.length; i < len; i++) {
+                num = 0;
+                for (var j = 0, len0 = this.x.length; j < len0; j++) {
+                    if (node[i][0][0] < this.x[j] && this.x[j] <= node[i][1][0] && node[i][0][1] < this.y[j] && this.y[j] <= node[i][1][1])
+                        num = num +1;
+                    draw_point(this.x[j], 1-this.y[j]);
+                    var textItem = new PointText({
+                        content: j,
+                        point: new Point(this.x[j]*1000, 1000-this.y[j]*1000),
+                        fillColor: 'blue'
+                    });
+                }
+                if (num == 1)
+                    draw_box(node[i][0][0], 1-node[i][0][1], node[i][1][0], 1-node[i][1][1]);
+                    tree.push(node[i]);
+                if (num > 1) {
+                    temp.push([[node[i][0][0], node[i][0][1]], [(node[i][0][0]+node[i][1][0])/2, (node[i][0][1]+node[i][1][1])/2]]);
+                    temp.push([[node[i][0][0], (node[i][0][1]+node[i][1][1])/2], [(node[i][0][0]+node[i][1][0])/2, node[i][1][1]]]);
+                    temp.push([[(node[i][0][0]+node[i][1][0])/2, (node[i][0][1]+node[i][1][1])/2], [node[i][1][0], node[i][1][1]]]);
+                    temp.push([[(node[i][0][0]+node[i][1][0])/2, node[i][0][1]], [node[i][1][0], (node[i][0][1]+node[i][1][1])/2]]);
+                } 
+            }
+            node = temp;
+        }
+        return tree;
+    }
+} 
+
+var L = new Logistic(0.5, 0.5, 30);
+var jack = new Quadtree(reconstruction(L.y, 2, 1));
+                    var textItem = new PointText({
+                        content: x_re,
+                        point: new Point(2,30),
+                        fillColor: 'blue'
+                    });
+
+jack.go();
+
+function draw_box(x_min, y_min, x_max, y_max) {
+    var path = new Path();
+    path.strokeColor = 'black';
+    path.add(new Point(x_min*1000, y_min*1000)); 
+    path.add(new Point(x_min*1000, y_max*1000)); 
+    path.add(new Point(x_max*1000, y_max*1000));
+    path.add(new Point(x_max*1000, y_min*1000));
+    path.closed = true;
+    path.fullySelected = false;
+}
+
+function draw_point(x, y) {
+    var path = new Path.Circle(new Point(x*1000, y*1000), 3);
+    path.strokeColor = 'red';
+    path.fillColor = 'white';
+}
+
+    </script>
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+      <strong><a href="#admin-offcanvas" data-am-offcanvas>CCM</a></strong> <small>Computing Center</small>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <!-- sidebar start -->
+  <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    <div class="am-offcanvas-bar admin-offcanvas-bar">
+      <ul class="am-list admin-sidebar-list">
+        <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+        <li class="admin-parent">
+          <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span> 计算模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+            <li><a href="s11.html" class="am-cf"><span class="am-icon-bug"></span> Toy Model</a></li>
+            <li><a href="s12.html"><span class="am-icon-puzzle-piece"></span> 重构</a></li>
+            <li><a href="s13.html"><span class="am-icon-th"></span> 空间剖分<span class="am-badge am-badge-secondary am-margin-right am-fr">四叉树</span></a></li>
+            <li><a href="s14.html"><span class="am-icon-check"></span> 因果推断<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          </ul>
+        </li>
+        <li><a href="s2.html"><span class="am-icon-file"></span> 文档</a></li>
+        <li><a href="s3.html"><span class="am-icon-pencil-square-o"></span> 代码</a></li>
+        <li><a href="s4.html"><span class="am-icon-sign-out"></span> 应用</a></li>
+      </ul>
+
+      <div class="am-panel am-panel-default admin-sidebar-panel">
+        <div class="am-panel-bd">
+          <p><span class="am-icon-bookmark"></span> 公告</p>
+          <p>来研究双色球策略吧。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- content start -->
+
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Toy Model</strong> / <small>Logistic Map</small></div>
+    </div>
+
+    <hr/>
+    <div class="am-g">
+      <div class="am-u-sm-12">
+            <script type="tex/latex">
+
+$$x(t) = r_x x(t-1)(1-x(t-1)),$$
+$$y(t) = r_y y(t-1)(1-y(t-1)-\beta x(t-1)).$$
+            </script>
+            <script type="text/javascript">
+                $('body').latex();
+            </script>
+          <p class="admin-content-comment"><br></p>
+      </div>
+    </div>
+    
+
+  </div>
+  <!-- content end -->
+
+</div>
+
+
+
+<footer>
+    <hr>
+    <p class="am-padding-left">Deployed in <span class="am-icon-windows"></span> Windows
+        Azure.<br/><span class="am-icon-bug"></span> Powered by</a> RubyStack, PaperScript, Amaze UI, ECharts, MathJax, and latex2html5. Developed with WebStorm.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

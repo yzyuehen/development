@@ -1,0 +1,444 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Computing Center</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+    <script type="text/x-mathjax-config">
+    // <![CDATA[
+    MathJax.Hub.Config({
+        TeX: {extensions: ["AMSmath.js", "AMSsymbols.js"]},
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        showProcessingMessages : false,
+        messageStyle : "none" ,
+        showMathMenu: false ,
+        tex2jax: {
+            processEnvironments: true,
+            inlineMath: [ ['$','$'], ["\(","\)"] ],
+            displayMath: [ ['$$','$$'], ["\[","\]"] ],
+            preview : "none",
+            processEscapes: true
+        },
+        "HTML-CSS": { linebreaks: { automatic:true, width: "latex-container"} }
+    });
+    // ]]>
+
+    </script>
+    <script type="text/javascript" src="../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <link rel="stylesheet" href="css/latex2html5.min.css">
+    <script type="text/javascript" src="js/latex2html5.min.js"></script>
+
+    <script type="text/javascript" src="js/DoubleColorBall.js"></script>
+    <script type="text/javascript" src="js/paper-full.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            start();
+        };
+    </script>
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong><a href="index.html" data-am-offcanvas>CCM</a></strong>
+        <small>Computing Center</small>
+    </div>
+
+
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span>
+                        计算模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="s11.html" class="am-cf"><span class="am-icon-bug"></span> Toy Model</a></li>
+                        <li><a href="s12.html"><span class="am-icon-puzzle-piece"></span> 重构</a></li>
+                        <li><a href="s13.html"><span class="am-icon-th"></span> 空间剖分<span
+                                class="am-badge am-badge-secondary am-margin-right am-fr">四叉树</span></a></li>
+                        <li><a href="s14.html"><span class="am-icon-check"></span> 因果推断<span
+                                class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                    </ul>
+                </li>
+                <li><a href="s2.html"><span class="am-icon-file"></span> 文档</a></li>
+                <li><a href="s3.html"><span class="am-icon-pencil-square-o"></span> 代码</a></li>
+                <li><a href="s4.html"><span class="am-icon-sign-out"></span> 应用</a></li>
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 公告</p>
+
+                    <p>来研究双色球策略吧。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content start -->
+
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">因果推断</strong> /
+                <small>检验 $x$ 是否为 $y$ 的因，计算 $\chi(M_Y \Rightarrow M_X), ~\chi(M_Y)$<br></small>
+            </div>
+
+        </div>
+        <hr/>
+
+        <div class="am-g">
+
+            <div class="am-u-sm-12">
+                $x(t) = 3.8 \cdot x(t-1)(1-x(t-1)),$<br>$y(t) = 3.8 \cdot y(t-1)(1-y(t-1) - 0.1 \cdot x(t-1)).$<br><br>
+                $T~$ <input id="TSlider" type="range" value="6" min="6" max="299"/> <span id="TValue">6</span>
+                <a href="#" onclick="start();">&nbsp&nbsp&nbsp&nbsp点我开始计算并绘图</a><hr>
+            </div>
+
+            <div class="am-u-sm-12">
+
+                <div class="am-u-sm-12">
+
+                    <table class="am-table">
+                        <thead>
+                        <tr>
+                            <th>指标（保序映射后计算新交点产生的新图）</th>
+                            <th>值</th>
+                            <th>创建时间（计算开始时间：<span id="start_time"></span>）</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>$M_Y \Rightarrow M_X$ 点的个数</td>
+                            <td><span id="t11"></span></td>
+                            <td><span id="t12"></span></td>
+                        </tr>
+                        <tr>
+                            <td>$M_Y \Rightarrow M_X$ 线段个数</td>
+                            <td><span id="t21"></span></td>
+                            <td><span id="t22"></span></td>
+                        </tr>
+                        <tr>
+                            <td>$M_Y \Rightarrow M_X$ 欧拉示性数</td>
+                            <td><span id="t31"></span></td>
+                            <td><span id="t32"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="am-u-sm-12">
+                    <div class="am-u-sm-12">
+                        <canvas id="myCanvas2" style="height:88%; width:88%;"></canvas>
+                    </div>
+                </div>
+                <div class="am-u-sm-12">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
+                        <canvas id="myCanvas" style="height:88%; width:88%;"></canvas>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
+                        <canvas id="myCanvas1" style="height:88%; width:88%;"></canvas>
+                    </div>
+                </div>
+
+
+                <small>注：以上两图有时绘制较慢，请耐心等待刷新。</small><br>
+                <small>注：左图为对 $M_y$ 剖分、近邻矩形连线形成一张图，将此图保序映到 $M_x$ 上的图像；右图为对左图，计算新产生的交点，以此形成的新图，红点为新交点。</small>
+            </div>
+
+
+
+            <div class="am-u-sm-12">
+                <hr><br><br>
+                <span class="am-text-xl">$leave~one~out$</span>
+                <br><br>
+                <span class="am-badge am-badge-secondary am-round">1. 做剖分后再去掉逐点</span>
+                <br>
+                检验 $x$ 是否为 $y$ 的因<br>
+                $\chi(M_Y)$ 为 $M_Y$ 剖分后去掉逐点的欧拉示性数<br>
+                $\chi(M_Y \Rightarrow M_X)$ 为 $M_Y$ 剖分后去掉逐点的图保序映射到 $M_X$ 上，计算新交点数即新边数的欧拉示性数<br>
+                $\chi(M_X)$ 为 $M_Y$ 剖分后去掉逐点后，$M_X$ 独自剖分再去掉对应逐点的欧拉示性数<br><br>
+                <span class="am-badge am-badge-secondary am-round">2. 去掉逐点后再做剖分</span>
+                <br>
+                检验 $x$ 是否为 $y$ 的因<br>
+                $\chi(M_Y)$ 为 $M_Y$ 去掉逐点后剖分的欧拉示性数<br>
+                $\chi(M_Y \Rightarrow M_X)$ 为 $M_Y$ 去掉逐点后剖分的图保序映射到 $M_X$ 上，计算新交点数即新边数的欧拉示性数<br>
+                $\chi(M_X)$ 为 $M_Y$ 去掉逐点后剖分后，$M_X$ 去掉对应逐点再独自剖分的欧拉示性数<br><br>
+
+                <div class="am-u-sm-12"><hr>
+                    $x(t) = 3.8 \cdot x(t-1)(1-x(t-1)),$<br>$y(t) = 3.8 \cdot y(t-1)(1-y(t-1) - 0.1 \cdot x(t-1)).$<br><br>
+                    $T~$ <input id="TSlider1" type="range" value="6" min="6" max="99"/> <span id="TValue1">6</span>
+                    <a>&nbsp&nbsp&nbsp&nbsp拖动计算</a><hr>
+                </div>
+
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+
+                        <table class="am-table am-table-compact am-table-bordered am-table-radius am-table-striped">
+                            <thead>
+                            <tr>
+                                <td>1. 做剖分后再去掉逐点（相关系数）</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>$\chi(M_Y \Rightarrow M_X)$, $\chi(M_Y)$</td>
+                                <td><span id="eyc1"></span></td>
+                            </tr>
+                            <tr>
+                                <td>$\chi(M_Y \Rightarrow M_X)$, $\chi(M_X)$</td>
+                                <td><span id="exc1"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                </div>
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+
+                    <table class="am-table am-table-compact am-table-bordered am-table-radius am-table-striped">
+                        <thead>
+                        <tr>
+                            <td>2. 去掉逐点后再做剖分（相关系数）</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>$\chi(M_Y \Rightarrow M_X)$, $\chi(M_Y)$</td>
+                            <td><span id="eyc2"></span></td>
+                        </tr>
+                        <tr>
+                            <td>$\chi(M_Y \Rightarrow M_X)$, $\chi(M_X)$</td>
+                            <td><span id="exc2"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="am-u-sm-12">
+                    <small><strong>附：欧拉示性数数一览</strong><br>
+                        1. 做剖分后再去掉逐点<br>
+                        $\chi(M_Y \Rightarrow M_X)$: <span id="ey2x1"></span><br>
+                        $\chi(M_Y)$: <span id="ey1"></span><br>
+                        $\chi(M_X)$: <span id="ex1"></span><br>
+                        2. 去掉逐点后再做剖分<br>
+                        $\chi(M_Y \Rightarrow M_X)$: <span id="ey2x2"></span><br>
+                        $\chi(M_Y)$: <span id="ey2"></span><br>
+                        $\chi(M_X)$: <span id="ex2"></span><br>
+                    </small>
+
+                </div>
+
+
+
+
+
+                <div class="am-u-sm-12"><hr>
+                    反过来，检验 $y$ 是否为 $x$ 的因<br><br>
+                    $T~$ <input id="TSlider2" type="range" value="6" min="6" max="99"/> <span id="TValue2">6</span>
+                    <a>&nbsp&nbsp&nbsp&nbsp拖动计算</a><hr>
+                </div>
+
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+
+                    <table class="am-table am-table-compact am-table-bordered am-table-radius am-table-striped">
+                        <thead>
+                        <tr>
+                            <td>1. 做剖分后再去掉逐点（相关系数）</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>$\chi(M_X \Rightarrow M_Y)$, $\chi(M_X)$</td>
+                            <td><span id="eyc1_"></span></td>
+                        </tr>
+                        <tr>
+                            <td>$\chi(M_X \Rightarrow M_Y)$, $\chi(M_Y)$</td>
+                            <td><span id="exc1_"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+
+                    <table class="am-table am-table-compact am-table-bordered am-table-radius am-table-striped">
+                        <thead>
+                        <tr>
+                            <td>2. 去掉逐点后再做剖分（相关系数）</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>$\chi(M_X \Rightarrow M_Y)$, $\chi(M_X)$</td>
+                            <td><span id="eyc2_"></span></td>
+                        </tr>
+                        <tr>
+                            <td>$\chi(M_X \Rightarrow M_Y)$, $\chi(M_Y)$</td>
+                            <td><span id="exc2_"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="am-u-sm-12">
+                    <small><strong>附：欧拉示性数数一览</strong><br>
+                        1. 做剖分后再去掉逐点<br>
+                        $\chi(M_Y \Rightarrow M_X)$: <span id="ey2x1_"></span><br>
+                        $\chi(M_Y)$: <span id="ey1_"></span><br>
+                        $\chi(M_X)$: <span id="ex1_"></span><br>
+                        2. 去掉逐点后再做剖分<br>
+                        $\chi(M_Y \Rightarrow M_X)$: <span id="ey2x2_"></span><br>
+                        $\chi(M_Y)$: <span id="ey2_"></span><br>
+                        $\chi(M_X)$: <span id="ex2_"></span><br>
+                    </small>
+                </div>
+
+
+                <div class="am-u-sm-12"><hr><div><br>
+            </div>
+
+        </div>
+                <span class="am-text-xl">总结</span>
+                <br><br>检验 $x$ 是否为 $y$ 的因时的所有相关系数从总体上看，比检验 $y$ 是否为 $x$ 的因时的更“好”（绝对值更大）<br><br><br><br>
+    </div>
+
+</div>
+        </div>
+        <!-- content end -->
+
+
+
+</div>
+
+<script language="javascript">
+    $(function () {
+        $('#TSlider').change(function () {
+            document.getElementById("TValue").innerHTML = this.value;
+        });
+        $('#TSlider').change();
+    });
+    $(function () {
+        $('#TSlider1').change(function () {
+            document.getElementById("TValue1").innerHTML = this.value; ec();
+        });
+        $('#TSlider1').change();
+    });
+    $(function () {
+        $('#TSlider2').change(function () {
+            document.getElementById("TValue2").innerHTML = this.value; ec1();
+        });
+        $('#TSlider2').change();
+    });
+</script>
+
+    <script>
+        function start() {
+            document.getElementById("start_time").innerHTML = Date();
+            var r_x = 3.8, r_y = 3.8, beta = 0.1;
+            var T = document.getElementById("TValue").innerHTML;
+            var x0 = 0.5, y0 = 0.5;
+            var L = new Logistic(x0, y0, r_x, r_y, beta, T);
+            var x_re = reconstruction(L.x, 2, 1), y_re = reconstruction(L.y, 2, 1);
+            var points = [];
+            for (var i = 0; i <= T; i++) {
+                points.push(i);
+            }
+            var jack = new Quadtree(y_re);
+            var graphic = new GetGraphic(points, jack.tree);
+            var newgraphic = new GetNewGraphic(graphic, x_re);
+            draw_graphic(graphic, x_re, myCanvas);
+            draw_new_graphic(newgraphic, x_re, myCanvas1);
+            document.getElementById("t11").innerHTML = newgraphic.points_num;
+            document.getElementById("t12").innerHTML = Date();
+            document.getElementById("t21").innerHTML = newgraphic.lines_num;
+            document.getElementById("t22").innerHTML = Date();
+            document.getElementById("t31").innerHTML = newgraphic.euler_characteristic;
+            document.getElementById("t32").innerHTML = Date();
+            draw_trees(x0, y0, r_x, r_y, beta, T, myCanvas2);
+        }
+        function ec() {
+            var r_x = 3.8, r_y = 3.8, beta = 0.1;
+            var T = document.getElementById("TValue1").innerHTML;
+            var x0 = 0.5, y0 = 0.5;
+            var L = new Logistic(x0, y0, r_x, r_y, beta, T);
+            var x_re = reconstruction(L.x, 2, 1), y_re = reconstruction(L.y, 2, 1);
+            var loo1 = new leave_one_out1(x_re, y_re);
+            var loo2 = new leave_one_out2(x_re, y_re);
+            document.getElementById("ex1").innerHTML = loo1.ec_X;
+            document.getElementById("ey1").innerHTML = loo1.ec_Y;
+            document.getElementById("ey2x1").innerHTML = loo1.ec_Y2X;
+            document.getElementById("ex2").innerHTML = loo2.ec_X;
+            document.getElementById("ey2").innerHTML = loo2.ec_Y;
+            document.getElementById("ey2x2").innerHTML = loo2.ec_Y2X;
+
+            document.getElementById("exc1").innerHTML = correlation(loo1.ec_X, loo1.ec_Y2X);
+            document.getElementById("eyc1").innerHTML = correlation(loo1.ec_Y, loo1.ec_Y2X);
+            document.getElementById("exc2").innerHTML = correlation(loo2.ec_X, loo2.ec_Y2X);
+            document.getElementById("eyc2").innerHTML = correlation(loo2.ec_Y, loo2.ec_Y2X);
+        }
+        function ec1() {
+            var r_x = 3.8, r_y = 3.8, beta = 0.1;
+            var T = document.getElementById("TValue2").innerHTML;
+            var x0 = 0.5, y0 = 0.5;
+            var L = new Logistic(x0, y0, r_x, r_y, beta, T);
+            var x_re = reconstruction(L.x, 2, 1), y_re = reconstruction(L.y, 2, 1);
+            var loo3 = new leave_one_out1(y_re, x_re);
+            var loo4 = new leave_one_out2(y_re, x_re);
+            document.getElementById("ex1_").innerHTML = loo3.ec_X;
+            document.getElementById("ey1_").innerHTML = loo3.ec_Y;
+            document.getElementById("ey2x1_").innerHTML = loo3.ec_Y2X;
+            document.getElementById("ex2_").innerHTML = loo4.ec_X;
+            document.getElementById("ey2_").innerHTML = loo4.ec_Y;
+            document.getElementById("ey2x2_").innerHTML = loo4.ec_Y2X;
+
+            document.getElementById("exc1_").innerHTML = correlation(loo3.ec_X, loo3.ec_Y2X);
+            document.getElementById("eyc1_").innerHTML = correlation(loo3.ec_Y, loo3.ec_Y2X);
+            document.getElementById("exc2_").innerHTML = correlation(loo4.ec_X, loo4.ec_Y2X);
+            document.getElementById("eyc2_").innerHTML = correlation(loo4.ec_Y, loo4.ec_Y2X);
+        }
+    </script>
+
+    <footer>
+        <hr>
+        <p class="am-padding-left">Deployed in <span class="am-icon-windows"></span> Windows
+            Azure.<br/><span class="am-icon-bug"></span> Powered by</a> RubyStack, PaperScript, Amaze UI, ECharts,
+            MathJax, and latex2html5. Developed with WebStorm.</p>
+    </footer>
+
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="assets/js/polyfill/rem.min.js"></script>
+    <script src="assets/js/polyfill/respond.min.js"></script>
+    <script src="assets/js/amazeui.legacy.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
