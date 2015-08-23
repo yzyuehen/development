@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="convnetjs/convnet.js"></script>
+    <script src="convnetjs/util.js"></script>
+    <script src="convnetjs/vis.js"></script>
+    <script src="convnetjs/deepqlearn.js"></script>
+    <script src="js/pixi.min.js"></script>
+
+</head>
+
+<body>
+<script>
+
+    var brain = new deepqlearn.Brain(2, 2);
+    var num = 10;
+    var good = 0;
+    var count = 0;
+    var result = [];
+    var rate = [];
+    var c = ["无病","面部瘫痪","脑部瘫痪","全身瘫痪","不治之症"];
+
+for(var k = 0; k <num; k ++) {
+
+    var state = [Math.floor(Math.random() * 3) + 1, Math.floor(Math.random() * 10) / 10];
+    alert("一个新的病人出现了！病情是"+c[state[0]]+"，暴躁指数是"+state[1]);
+        var reward = 0;
+        var st = "";
+
+
+        while (1) {
+            var action = brain.forward(state); // returns index of chosen action
+            var seed = Math.floor(Math.random() * 10);
+            var trans = 1;
+            if (action == 0) {
+                alert("采用药物治疗！");
+                if (state[0] == 1) {
+                    if (seed < 7) {
+                        state[0] = 0;
+                    }
+                    if (seed < 9 && seed >= 7) {
+                        state[0] = 1;
+                        trans = -0.5;
+                    }
+                    if (seed >= 9) {
+                        state[0] = 2;
+                        trans = -1;
+                    }
+                }
+                if (state[0] == 2) {
+                    if (seed < 1) {
+                        state[0] = 0;
+                    }
+                    if (seed < 5 && seed >= 1) {
+                        state[0] = 1;
+                    }
+                    if (seed < 9 && seed >= 5) {
+                        state[0] = 2;
+                        trans = -0.5;
+                    }
+                    if (seed >= 9) {
+                        state[0] = 3;
+                        trans = -1;
+                    }
+                }
+                if (state[0] == 3) {
+                    if (seed < 2) {
+                        state[0] = 1;
+                    }
+                    if (seed < 4 && seed >= 2) {
+                        state[0] = 2;
+                    }
+                    if (seed < 9 && seed >= 4) {
+                        state[0] = 3;
+                        trans = -0.5;
+                    }
+                    if (seed >= 9) {
+                        state[0] = 4;
+                        trans = -1;
+                    }
+                }
+            }
+            if (action == 1) {
+                if (state[0] == 1) {
+                    alert("采用手术治疗！");
+                    if (seed < 3) {
+                        state[0] = 0;
+                    }
+                    if (seed < 4 && seed >= 3) {
+                        state[0] = 1;
+                        trans = -0.5;
+                    }
+                    if (seed < 6 && seed >= 4) {
+                        state[0] = 2;
+                        trans = -1;
+                    }
+                    if (seed < 7 && seed >= 6) {
+                        state[0] = 3;
+                        trans = -1;
+                    }
+                    if (seed >= 7) {
+                        state[0] = 4;
+                        trans = -1;
+                    }
+                }
+                if (state[0] == 2) {
+                    if (seed < 3) {
+                        state[0] = 0;
+                    }
+                    if (seed < 7 && seed >= 3) {
+                        state[0] = 1;
+                    }
+                    if (seed < 8 && seed >= 7) {
+                        state[0] = 2;
+                        trans = -0.5;
+                    }
+                    if (seed < 9 && seed >= 8) {
+                        state[0] = 3;
+                        trans = -1;
+                    }
+                    if (seed >= 9) {
+                        state[0] = 4;
+                        trans = -1;
+                    }
+                }
+                if (state[0] == 3) {
+                    if (seed < 2) {
+                        state[0] = 0;
+                    }
+                    if (seed < 5 && seed >= 2) {
+                        state[0] = 1;
+                    }
+                    if (seed < 8 && seed >= 5) {
+                        state[0] = 2;
+                    }
+                    if (seed < 9 && seed >= 8) {
+                        state[0] = 3;
+                        trans = -0.5;
+                    }
+                    if (seed >= 9) {
+                        state[0] = 4;
+                        trans = -1;
+                    }
+                }
+            }
+            alert("病症转为"+c[state[0]]+"，暴躁指数是"+state[1]);
+            state[1] += 0.2;
+            if (state[1] > 1) {
+                state[1] = 1;
+            }
+            var cute = 0;
+            if (state[0] == 0) {
+                cute = 10;
+            }
+            if (state[0] == 4) {
+                cute = -100;
+            }
+            reward = reward - state[1] + trans + cute;
+            brain.backward(reward); // <-- learning magic happens here
+            if (state[0] == 0 || state[0] == 4) {
+                count += 1;
+
+                if (state[0] == 0) {
+                    alert("治疗成功！");
+                }
+                if (state[0] == 4) {
+                    alert("病人死了！");
+                }
+                rate.push(good / count);
+
+                break;
+            }
+
+        }
+    }
+
+
+
+
+</script>
+
+<div id="eg"></div>
+</body>
+</html>
