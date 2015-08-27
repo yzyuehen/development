@@ -1,0 +1,206 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>xuhui</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong><a href="#admin-offcanvas" data-am-offcanvas>徐汇区</a></strong> <small>智慧城市</small>
+    </div>
+
+
+</header>
+
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="xuhui.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span> 建模工作 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="xuhui1.html" class="am-cf"><span class="am-icon-th"></span> 数据预处理</a></li>
+
+                        <li><a href="xuhui2.html"><span class="am-icon-check"></span> 因果推断<span class="am-badge am-badge-secondary am-margin-right am-fr">CCM</span></a></li>
+                        <li><a href="xuhui3.html"><span class="am-icon-puzzle-piece"></span> 可视化</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 演示版本</p>
+                    <p>V1.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content start -->
+
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">数据预处理</strong></div>
+        </div>
+
+        <hr/>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+
+                <table class="am-table">
+                    <thead>
+                    <tr>
+                        <th>问题来源编号</th>
+                        <th>名称</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="am-warning">
+                        <td>10</td>
+                        <td>12345上报</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>12319上报</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>监督员上报</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>热线来电</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>市级督察</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>视频上报</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>公众投诉</td>
+                    </tr>
+                    <tr>
+                        <td>61</td>
+                        <td>创新工作</td>
+                    </tr>
+                    <tr>
+                        <td>62</td>
+                        <td>督察员上报</td>
+                    </tr>
+                    <tr>
+                        <td>63</td>
+                        <td>防汛防台</td>
+                    </tr>
+                    <tr>
+                        <td>64</td>
+                        <td>斜土热线</td>
+                    </tr>
+                    <tr>
+                        <td>65</td>
+                        <td>居民区上报</td>
+                    </tr>
+                    <tr>
+                        <td>66</td>
+                        <td>徐家汇一门式</td>
+                    </tr>
+                    <tr>
+                        <td>67</td>
+                        <td>徐家汇联勤上报</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td>专项调查</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>区12345</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>其他上报</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>信访上报</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <br>
+                <p>我们获取的导出表中有以上各分类的问题来源信息。</p>
+                <p>对于每一个问题来源，我们首先关注问题的分类信息，将出现频次较高的分类重点考察，如此形成该问题来源的分类特征谱。</p>
+                <p>以上处理过程中需要注意的是某些问题来源，例如 <code>督察员上报</code> 的分类统计频次中需要过滤掉未发生信息，如督察员会定期汇报该地段无邪教人员活动，此事不应统计此问题分类的频次。</p>
+                <p>生成各问题来源的分类特征谱以后，我们可以纵向比较各问题来源的特征差异。如来自某一层级上报的问题中，井盖这项问题分类占据特征谱首位，而在另一层级上报的问题中，噪音扰民这项问题分类占据特征谱首位，如此就可以对不同来源的问题作差异性分析。</p>
+                <p>此外，同一问题来源的分类特征谱在不同的时间点也有所不同，这也是我们分析考察的对象。</p>
+                <p>我们列出 <code>12345上报</code> 问题来源的分类特征谱：</p>
+                <table class="am-table">
+                    <thead>
+                    <tr>
+                        <th>问题分类</th>
+                        <th>频次</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="am-danger"><td>违法建筑</td><td>2084</td></tr><tr class="am-danger"><td>住宅小区管理</td><td>1807</td></tr><tr class="am-danger"><td>噪音扰民</td><td>1276</td></tr><tr class="am-warning"><td>群租整治</td><td>679</td></tr><tr class="am-warning"><td>市场管理</td><td>614</td></tr><tr class="am-warning"><td>民生保障</td><td>608</td></tr><tr class="am-warning"><td>工作作风态度</td><td>415</td></tr><tr class="am-warning"><td>市容环境</td><td>407</td></tr><tr class="am-warning"><td>其他</td><td>384</td></tr><tr class="am-warning"><td>群租</td><td>357</td></tr><tr class="am-success"><td>社区管理</td><td>341</td></tr><tr class="am-success"><td>环境保护（除噪音）</td><td>333</td></tr><tr class="am-success"><td>住房改造</td><td>326</td></tr><tr class="am-success"><td>咨询类</td><td>319</td></tr><tr class="am-success"><td>社区事务管理</td><td>288</td></tr><tr class="am-success"><td>市政水务</td><td>285</td></tr><tr class="am-success"><td>劳动纠纷</td><td>282</td></tr><tr class="am-success"><td>招考报名</td><td>238</td></tr><tr class="am-success"><td>动迁征收、置换</td><td>218</td></tr><tr class="am-success"><td>市政规划</td><td>185</td></tr><tr class="am-primary"><td>交通安全</td><td>174</td></tr><tr class="am-primary"><td>无证经营</td><td>173</td></tr><tr class="am-primary"><td>学校事务管理</td><td>86</td></tr><tr class="am-primary"><td>非住宅物业管理</td><td>76</td></tr><tr class="am-primary"><td>其他市政设施</td><td>76</td></tr><tr class="am-primary"><td>教育类建设扰民</td><td>61</td></tr><tr class="am-primary"><td>住房保障</td><td>58</td></tr><tr class="am-primary"><td>渣土车管理</td><td>47</td></tr><tr class="am-primary"><td>林业绿化</td><td>43</td></tr><tr class="am-primary"><td>消防安全</td><td>38</td></tr><tr class="am-primary"><td>工商消保</td><td>36</td></tr><tr class="am-primary"><td>行政收费</td><td>35</td></tr><tr class="am-primary"><td>车容车貌脏乱差</td><td>34</td></tr><tr class="am-primary"><td>滨江管理</td><td>28</td></tr><tr class="am-primary"><td>其它井盖</td><td>25</td></tr><tr class="am-primary"><td>路面积水、污水冒溢、粪便冒溢</td><td>23</td></tr><tr class="am-primary"><td>表扬感谢</td><td>23</td></tr><tr class="am-primary"><td>教育类活动扰民</td><td>23</td></tr><tr class="am-primary"><td>教育机构</td><td>22</td></tr><tr class="am-primary"><td>养犬管理</td><td>21</td></tr><tr class="am-primary"><td>南站管理</td><td>20</td></tr><tr class="am-primary"><td>上水井盖</td><td>18</td></tr><tr class="am-primary"><td>转学插班</td><td>17</td></tr><tr class="am-primary"><td>房屋交易登记</td><td>16</td></tr><tr class="am-primary"><td>信访类</td><td>15</td></tr><tr class="am-primary"><td>工地安全</td><td>13</td></tr><tr class="am-primary"><td>地锁</td><td>13</td></tr><tr class="am-primary"><td>政策咨询</td><td>13</td></tr><tr class="am-primary"><td>教育收费</td><td>11</td></tr><tr class="am-primary"><td>学校设施</td><td>11</td></tr><tr class="am-active"><td>教育作风</td><td>8</td></tr><tr class="am-active"><td>家庭医疗服务</td><td>7</td></tr><tr class="am-active"><td>道路施工和施工问题</td><td>7</td></tr><tr class="am-active"><td>社区医疗服务</td><td>6</td></tr><tr class="am-active"><td>擅自占用道路堆物、施工</td><td>6</td></tr><tr class="am-active"><td>社会办学</td><td>6</td></tr><tr class="am-active"><td>医疗机构服务</td><td>6</td></tr><tr class="am-active"><td>市政公共设施偷盗破坏或占用</td><td>5</td></tr><tr class="am-active"><td>道路破损</td><td>5</td></tr><tr class="am-active"><td>历史保护建筑</td><td>5</td></tr><tr class="am-active"><td>暴露垃圾</td><td>5</td></tr><tr class="am-active"><td>食品药品安全</td><td>5</td></tr><tr class="am-active"><td>机动车乱停放、非机动车乱停放</td><td>4</td></tr><tr class="am-active"><td>治安安全</td><td>4</td></tr><tr class="am-active"><td>计划生育</td><td>3</td></tr><tr class="am-active"><td>电信井盖</td><td>3</td></tr><tr class="am-active"><td>机非分隔设施</td><td>3</td></tr><tr class="am-active"><td>雨水井盖</td><td>2</td></tr><tr class="am-active"><td>沿街商铺（含各类亭）跨门营业</td><td>2</td></tr><tr class="am-active"><td>路灯</td><td>2</td></tr><tr><td>文明施工措施不落实</td><td>2</td></tr><tr><td>户籍及门牌地址管理</td><td>2</td></tr><tr><td>无证停车场</td><td>2</td></tr><tr><td>交通指示牌</td><td>2</td></tr><tr><td>文化保护建筑</td><td>2</td></tr><tr><td>小区物业管理</td><td>2</td></tr><tr><td>违章搭建</td><td>2</td></tr><tr><td>架空线坠落</td><td>2</td></tr><tr><td>出具证明</td><td>2</td></tr><tr><td>乱涂写、乱张贴、乱刻画</td><td>2</td></tr><tr><td>行道树</td><td>1</td></tr><tr><td>经济、人口普查</td><td>1</td></tr><tr><td>桥梁</td><td>1</td></tr><tr><td>公共交通站亭</td><td>1</td></tr><tr><td>物料运输产生扬尘</td><td>1</td></tr><tr><td>自来水管破裂</td><td>1</td></tr><tr><td>居民区消防隐患 </td><td>1</td></tr><tr><td>电信立杆</td><td>1</td></tr><tr><td>路面塌陷</td><td>1</td></tr><tr><td>其他立杆</td><td>1</td></tr><tr><td>其它</td><td>1</td></tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- content end -->
+</div>
+
+
+<footer>
+    <hr>
+    <p class="am-padding-left">复旦大学<br/>数学科学学院<br><br><span class="am-icon-bug"></span> Powered by</a> RubyStack, DoubleColorBall, PaperScript, Amaze UI, ECharts, MathJax, and latex2html5. Developed with WebStorm.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>xuhui</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong><a href="#admin-offcanvas" data-am-offcanvas>徐汇区</a></strong> <small>智慧城市</small>
+    </div>
+
+
+</header>
+
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="xuhui.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-table"></span> 建模工作 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="xuhui1.html" class="am-cf"><span class="am-icon-th"></span> 数据预处理</a></li>
+                        <li><a href="xuhui2.html"><span class="am-icon-check"></span> 因果推断<span class="am-badge am-badge-secondary am-margin-right am-fr">CCM</span></a></li>
+                        <li><a href="xuhui3.html"><span class="am-icon-puzzle-piece"></span> 可视化</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 演示版本</p>
+                    <p>V1.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content start -->
+
+    <div class="admin-content">
+
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>概览</small></div>
+        </div>
+
+        <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+            <li><a href="xuhui1.html" class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>数据预处理</a></li>
+
+            <li><a href="xuhui2.html" class="am-text-danger"><span class="am-icon-btn am-icon-th"></span><br/>因果推断</a></li>
+
+            <li><a href="xuhui3.html" class="am-text-warning"><span class="am-icon-btn am-icon-puzzle-piece"></span><br/>可视化</a></li>
+        </ul>
+        <hr>
+        <div class="am-g">
+            <div class="am-u-sm-12">
+
+                <p class="admin-content-comment am-icon-warning">  数据的初步 <font color="#dc143c">预处理</font> 及 <font color="#dc143c">可视化</font>， 因果推断算法基于我们开发的 <font color="#008b8b">CCM</font> 算法库。</p>
+                <p class="admin-content-comment"></p>
+            </div>
+        </div>
+
+    </div>
+    <!-- content end -->
+
+</div>
+
+
+<footer>
+    <hr>
+    <p class="am-padding-left">复旦大学<br/>数学科学学院<br><br><span class="am-icon-bug"></span> Powered by</a> RubyStack, DoubleColorBall, PaperScript, Amaze UI, ECharts, MathJax, and latex2html5. Developed with WebStorm.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>
